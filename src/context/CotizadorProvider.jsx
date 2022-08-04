@@ -1,13 +1,20 @@
 
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const CotizadorContext = createContext();
 
 const CotizadorProvider = ({ children }) => {
 
+    const handleChangeDatos = evento => {
+        console.log(evento.target.name)
+        console.log(evento.target.value)
+    }
+
     return (
         <CotizadorContext.Provider
-            value = {{}}        
+            value = {{
+                handleChangeDatos
+            }}        
         >
             { children }
         </CotizadorContext.Provider>
