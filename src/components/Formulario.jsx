@@ -6,17 +6,18 @@ import Error from "./Error"
 
 const Formulario = () => {
 
-    const { datos, handleChangeDatos, setError, error } = useCotizador()
+    const { datos, handleChangeDatos, setError, error, cotizarSeguro } = useCotizador()
 
     const handleSubmit = evento => {
         evento.preventDefault()
 
-        if(Object.values(datos).includes('')){
+        if(Object.values(datos).includes("")){
             setError("Todos los campos son obligatorios")
             return
         }
 
-        setError('')
+        setError("")
+        cotizarSeguro()
     }
 
     return (
@@ -50,7 +51,7 @@ const Formulario = () => {
         <div className = "my-5">
             <label className = "block mb-3 font-bold text-gray-400 uppercase">Año</label>
             <select
-                name = "año"
+                name = "year"
                 className = "w-full p-3 bg-white"
                 onChange = {event => handleChangeDatos(event)}
                 value = {datos.year}
